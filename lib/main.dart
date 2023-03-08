@@ -180,19 +180,23 @@ class _PasswordGeneratorState extends State<PasswordGenerator> {
                   },
                 ),
                 const Text("Avoid Ambiguous"),
-                Slider(
-                  value: _passwordLength,
-                  max: 100,
-                  divisions: 100,
-                  label: _passwordLength.round().toString(),
-                  onChanged: (double value) {
-                    setState(() {
-                      _passwordLength = value;
-                    });
-                    _generatePassword();
-                  },
+                SizedBox(
+                  width: 120,
+                  child: Slider(
+                    value: _passwordLength,
+                    min: 8,
+                    max: 100,
+                    divisions: 100,
+                    label: _passwordLength.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _passwordLength = value;
+                      });
+                      _generatePassword();
+                    },
+                  ),
                 ),
-                Text(("Length ${_passwordLength.round()}"))
+                Expanded(child: Text(("Length ${_passwordLength.round()}")))
               ],
             ),
             Container(
